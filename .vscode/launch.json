@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Deploys.SQS",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/Deploys.SQS/bin/Debug/netcoreapp2.2/Deploys.SQS.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/Deploys.SQS",
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    }
+  ]
+}

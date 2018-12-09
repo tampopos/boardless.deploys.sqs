@@ -1,0 +1,27 @@
+{
+  "name": "boardless.deploys.sqs",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-dotnet-cli": "^1.1.0",
+    "gulp-zip": "^4.2.0",
+    "path": "^0.12.7",
+    "run-sequence": "^2.2.1"
+  },
+  "scripts": {
+    "start": "gulp run",
+    "install": "gulp restore",
+    "restore": "gulp restore",
+    "build": "gulp build",
+    "publish": "gulp publish",
+    "test": "gulp test",
+    "db": "gulp db"
+  },
+  "author": "",
+  "license": "ISC"
+}
