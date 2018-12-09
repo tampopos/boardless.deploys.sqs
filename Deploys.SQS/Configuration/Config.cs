@@ -3,8 +3,8 @@ using System.Linq;
 using Microsoft.Extensions.Configuration;
 using Tmpps.Infrastructure.SQS;
 using Tmpps.Infrastructure.SQS.Interfaces;
+using Tmpps.Infrastructure.SQS.Models;
 using UseCases.Interfaces;
-using UseCases.Models;
 
 namespace Deploys.SQS.Configuration
 {

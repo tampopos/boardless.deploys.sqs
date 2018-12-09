@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Tmpps.Infrastructure.SQS.Interfaces;
 using UseCases.Interfaces;
 
 namespace UseCases
@@ -10,15 +11,15 @@ namespace UseCases
     {
         private ISQSDeploysConfig config;
         private ILogger logger;
-        private IQueueDeployService queueDeployService;
+        private ISQSQueueFactory sqsQueueFactory;
 
         public QueueDeleteUseCase(
             ISQSDeploysConfig config,
-            IQueueDeployService queueDeployService,
+            ISQSQueueFactory sqsQueueFactory,
             ILogger logger)
         {
             this.config = config;
-            this.queueDeployService = queueDeployService;
+            this.sqsQueueFactory = sqsQueueFactory;
             this.logger = logger;
         }
 
@@ -28,7 +29,7 @@ namespace UseCases
             {
                 try
                 {
-                    await this.queueDeployService.DeleteQueueAsync(queue);
+                    await this.sqsQueueFactory.DeleteQueueAsync(queue);
                     this.logger.LogInformation($"Complete delete {queue}");
                     return true;
                 }

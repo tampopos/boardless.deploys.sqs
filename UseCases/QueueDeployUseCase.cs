@@ -8,8 +8,9 @@ using Microsoft.Extensions.Logging;
 using Tmpps.Infrastructure.Common.DependencyInjection.Interfaces;
 using Tmpps.Infrastructure.Common.Foundation.Exceptions;
 using Tmpps.Infrastructure.Common.IO.Interfaces;
+using Tmpps.Infrastructure.SQS.Interfaces;
+using Tmpps.Infrastructure.SQS.Models;
 using UseCases.Interfaces;
-using UseCases.Models;
 
 namespace UseCases
 {
@@ -67,17 +68,17 @@ namespace UseCases
             {
                 using(var scope = this.scopeProvider.BeginLifetimeScope())
                 {
-                    var service = scope.Resolve<IQueueDeployService>();
-                    var queueUrl = await service.GetQueueUrlAsync(queue.Name);
+                    var factory = scope.Resolve<ISQSQueueFactory>();
+                    var queueUrl = await factory.GetQueueUrlAsync(queue.Name);
                     if (string.IsNullOrEmpty(queueUrl))
                     {
-                        queueUrl = await service.CreateQueueAsync(queue);
+                        queueUrl = await factory.CreateQueueAsync(queue);
                     }
                     else
                     {
-                        await service.SetQueueAttributesAsync(queueUrl, queue);
+                        await factory.SetQueueAttributesAsync(queueUrl, queue);
                     }
-                    await service.SetDeadLetterSettingsAsync(queueUrl, queue);
+                    await factory.SetDeadLetterSettingsAsync(queueUrl, queue);
                 }
                 this.logger.LogInformation($"Complete deploy {queue.Name}");
                 return true;

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using UseCases.Models;
+using Tmpps.Infrastructure.SQS.Models;
 
 namespace UseCases.Interfaces
 {

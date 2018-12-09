@@ -5,7 +5,7 @@
   </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Tmpps.Infrastructure.Autofac" Version="2.0.0" />
-        <PackageReference Include="Tmpps.Infrastructure.SQS" Version="2.1.0" />
+        <PackageReference Include="Tmpps.Infrastructure.SQS" Version="2.2.0" />
     </ItemGroup>
 
 </Project>

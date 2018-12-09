@@ -1,4 +1,5 @@
 using Tmpps.Infrastructure.Common.DependencyInjection.Builder.Interfaces;
+using Tmpps.Infrastructure.SQS;
 using UseCases.Interfaces;
 
 namespace UseCases
@@ -8,8 +9,8 @@ namespace UseCases
         public void DefineModule(IDIBuilder builder)
         {
             builder.RegisterType<QueueDeployUseCase>(x => x.As<IQueueDeployUseCase>());
-            builder.RegisterType<QueueDeployService>(x => x.As<IQueueDeployService>());
             builder.RegisterType<QueueDeleteUseCase>(x => x.As<IQueueDeleteUseCase>());
+            builder.RegisterModule(new SQSDeployDIModule());
         }
     }
 }
